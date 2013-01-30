@@ -1,0 +1,14 @@
+#awardContent {width:384px;
+			font-family:"Verdana";
+			border:2px;
+			border-style:double;
+			border-width:5px;
+			padding:10px;
+			text-align:center;
+			position:relative}
+
+h1 {font-family:"Georgia"}
+
+#image {position:absolute;
+		bottom:-30;
+ 		right:0;}
