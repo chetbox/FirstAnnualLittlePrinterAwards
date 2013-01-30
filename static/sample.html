@@ -1,12 +1,17 @@
 <html>
 <head><title>This is the Awards sample</title>
 <link rel="stylesheet" type="text/css" href="awardstyle.css">
-
+<script>
+function setAward(){
+	awardDiv = document.getElementById("awardTitle");
+	awardDiv.innerHTML = "TESTING";
+}
+</script>
 </head>
-<body>
+<body onload="setAward()">
 <div id ="awardContent">
 <h1>CONGRATULATIONS</h1>
-<p>______________, you have won the <br/><strong><span id="awardTitle">"Sassy Swagger"</span></strong> of the year award. </p>
+<p>______________, you have won the <br/><strong><span id="awardTitle">Sassy Swagger</span></strong> of the year award. </p>
 <p>&nbsp</p>
 <p><span id="signature">Signed ___________________</span></p>
 <div id="image"><img src="images/ribbon.svg" alt="Winners ribbon"/></div>
