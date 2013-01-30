@@ -1,0 +1,15 @@
+{
+    "owner_email" : "sarahrules@gmail.com",
+    "publication_api_version":"1.0",
+    "name": "First Annual Little Printer Awards",
+    "description": "Present an award to your little buddies",
+    "delivered_on": "whenver you like",
+    "send_timezone_info": true,
+    "send_delivery_count": false,
+    "external_configuration": false,
+    "config" : {
+      "fields": [
+      ]
+    }
+}
+
