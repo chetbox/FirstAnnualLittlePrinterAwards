@@ -3,7 +3,8 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [certificates.etag :refer [wrap-etag]]
-            [clojure.string :refer [split-lines]]))
+            [clojure.string :refer [split-lines]]
+            [ring.adapter.jetty :refer [run-jetty]]))
 
 (defn static-file
   [filename]
@@ -32,3 +33,7 @@
   (-> (handler/site app-routes)
   		(wrap-etag)
   		(wrap-log)))
+
+(defn -main []
+  (let [port (Integer/parseInt (System/getenv "PORT"))]
+    (run-jetty app {:port port})))
