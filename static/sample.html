@@ -1,20 +1,26 @@
 <html>
-<head><title>This is the Awards sample</title>
-<link rel="stylesheet" type="text/css" href="css/awardstyle.css">
-<script>
-function setAward(){
-	awardDiv = document.getElementById("awardTitle");
-	awardDiv.innerHTML = "TESTING";
-}
-</script>
-</head>
-<body onload="setAward()">
-<div id ="awardContent">
-<h1>CONGRATULATIONS</h1>
-<p>______________, you have won the <br/><strong><span id="awardTitle">Sassy Swagger</span></strong> of the year award. </p>
-<p>&nbsp</p>
-<p><span id="signature">Signed ___________________</span></p>
-<div id="image"><img src="images/ribbon.svg" alt="Winners ribbon"/></div>
-</div>
-</body>
+  <head>
+    <title>This is the Awards sample</title>
+  	<link rel="stylesheet" type="text/css" href="css/awardstyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>
+      function setAward(){
+        $.ajax({
+          url: '/award',
+          success: function(award) {
+            $("#awardTitle").text(award);
+          }
+        });
+      }
+    </script>
+  </head>
+  <body onload="setAward()">
+    <div id ="awardContent">
+    <h1>CONGRATULATIONS</h1>
+    <p>______________, you have won the <br/><strong><span id="awardTitle">...</span></strong> of the year award. </p>
+    <p>&nbsp;</p>
+    <p><span id="signature">Signed ___________________</span></p>
+    <div id="image"><img src="images/ribbon.png" alt="Winners ribbon"/></div>
+    </div>
+  </body>
 </html>
