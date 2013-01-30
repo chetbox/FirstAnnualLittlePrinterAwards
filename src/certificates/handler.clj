@@ -2,9 +2,9 @@
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
-            [certificates.etag :refer [wrap-etag]]
-            [clojure.string :refer [split-lines]]
-            [ring.adapter.jetty :refer [run-jetty]]))
+            [ring.middleware.etag :refer [wrap-etag]]
+            [ring.adapter.jetty :refer [run-jetty]]
+						[clojure.string :refer [split-lines]]))
 
 (defn static-file
   [filename]
