@@ -26,10 +26,8 @@
        (static-file "meta.json"))
   (GET "/sample" []
        (apply str (certificate {:title "Most Fabulous Printer User"})))
-  (GET "/award" []
-       (rand-nth (awards)))
- 	(GET "/clojure-version" []
-  		 (clojure-version))
+  (GET "/edition" []
+       (apply str (certificate {:title (rand-nth (awards))})))
   (route/files "/" {:root "static"})
   (route/not-found "Not Found"))
 
