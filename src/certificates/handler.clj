@@ -37,5 +37,5 @@
 
 (defn -main []
   (let [port-str (System/getenv "PORT")
-        port (if port-str (Integer/parseInt port-str 3000))]
+        port (if port-str (Integer/parseInt port-str) 3000)]
     (run-jetty app {:port port})))
