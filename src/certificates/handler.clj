@@ -28,6 +28,8 @@
        (apply str (certificate {:title "Most Fabulous Printer User"})))
   (GET "/award" []
        (rand-nth (awards)))
+ 	(GET "/clojure-version" []
+  		 (clojure-version))
   (route/files "/" {:root "static"})
   (route/not-found "Not Found"))
 
