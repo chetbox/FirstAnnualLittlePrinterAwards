@@ -2,19 +2,8 @@
   <head>
     <title>This is the Awards sample</title>
   	<link rel="stylesheet" type="text/css" href="css/awardstyle.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script>
-      function setAward(){
-        $.ajax({
-          url: '/award',
-          success: function(award) {
-            $("#awardTitle").text(award);
-          }
-        });
-      }
-    </script>
   </head>
-  <body onload="setAward()">
+  <body>
     <div id ="awardContent">
     <h1>CONGRATULATIONS</h1>
     <p>______________, you have won the <br/><strong><span id="awardTitle">...</span></strong> of the year award. </p>

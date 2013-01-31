@@ -3,17 +3,19 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
             [ring.middleware.etag :refer [wrap-etag]]
+            [ring.util.response :refer [response]]
             [ring.adapter.jetty :refer [run-jetty]]
-						[clojure.string :refer [split-lines]]))
+						[clojure.string :refer [split-lines]]
+						[clojure.java.io :refer [file]]
+            [net.cgrand.enlive-html :as html]))
+
+(html/deftemplate certificate (file "static/sample.html")
+  [award]
+  [:#awardTitle] (html/content (:title award)))
 
 (defn static-file
   [filename]
   (slurp (str "static/" filename)))
-
-(defn wrap-log [app]
-  (fn [req]
-    (println req)
-    (app req)))
 
 (defn awards
   []
@@ -23,7 +25,7 @@
   (GET "/meta.json" []
        (static-file "meta.json"))
   (GET "/sample" []
-       (static-file "sample.html"))
+       (apply str (certificate {:title "Most Fabulous Printer User"})))
   (GET "/award" []
        (rand-nth (awards)))
   (route/files "/" {:root "static"})
@@ -31,9 +33,9 @@
 
 (def app
   (-> (handler/site app-routes)
-  		(wrap-etag)
-  		(wrap-log)))
+  		(wrap-etag)))
 
 (defn -main []
-  (let [port (Integer/parseInt (System/getenv "PORT"))]
+  (let [port-str (System/getenv "PORT")
+        port (if port-str (Integer/parseInt port-str 3000))]
     (run-jetty app {:port port})))
