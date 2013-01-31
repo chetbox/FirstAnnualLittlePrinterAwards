@@ -5,7 +5,7 @@
                  [compojure "1.1.5"]
                  [ring/ring-core "1.1.8"]
                  [ring/ring-jetty-adapter "1.1.8"]
-								 [org.clojars.mikejs/ring-etag-middleware "0.1.0-SNAPSHOT"]
+								 [ring.middleware.etag "1.0.0-SNAPSHOT"]
                  [enlive "1.0.1"]]
   :plugins [[lein-ring "0.8.2"]]
   :main "certificates.handler"

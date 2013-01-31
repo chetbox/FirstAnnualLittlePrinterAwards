@@ -2,7 +2,7 @@
   (:use compojure.core)
   (:require [compojure.handler :as handler]
             [compojure.route :as route]
-            [ring.middleware.etag :refer [wrap-etag]]
+            [ring.middleware.etag.core :refer [with-etag create-hashed-etag-fn md5]]
             [ring.util.response :refer [response]]
             [ring.adapter.jetty :refer [run-jetty]]
 						[clojure.string :refer [split-lines]]
@@ -33,7 +33,7 @@
 
 (def app
   (-> (handler/site app-routes)
-  		(wrap-etag)))
+  		(with-etag {:etag-generator (create-hashed-etag-fn md5)})))
 
 (defn -main []
   (let [port-str (System/getenv "PORT")
