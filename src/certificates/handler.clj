@@ -13,17 +13,15 @@
   [award]
   [:#awardTitle] (html/content (:title award)))
 
-(defn static-file
-  [filename]
-  (slurp (str "static/" filename)))
-
 (defn awards
   []
-  (split-lines (static-file "awardTitles.txt")))
+  (split-lines (slurp "static/awardTitles.txt")))
 
 (defroutes app-routes
   (GET "/meta.json" []
-       (static-file "meta.json"))
+       (response (file "static/meta.json")))
+  (GET "/icon.png" []
+       (response (file "static/images/ribbon.png")))
   (GET "/sample/" []
        (apply str (certificate {:title "Most Fabulous Printer User"})))
   (GET "/edition/" []
