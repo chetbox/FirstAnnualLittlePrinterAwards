@@ -33,7 +33,7 @@
 
 (def app
   (-> (handler/site app-routes)
-  		));(wrap-etag)))
+  		(wrap-etag)))
 
 (defn -main []
   (let [port-str (System/getenv "PORT")
